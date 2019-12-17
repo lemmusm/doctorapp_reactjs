@@ -1,17 +1,20 @@
 import React, { Component, Fragment } from 'react';
 import { Container, Card, Form, Button, Row, Col } from 'react-bootstrap';
+import uuid from 'uuid';
+import { delay } from 'q';
 
+const stateInicial = {
+  cita: {
+    doctor: '',
+    paciente: '',
+    fecha: '',
+    hora: '',
+    sintomas: ''
+  },
+  error: false
+};
 class NuevaCita extends Component {
-  state = {
-    cita: {
-      doctor: '',
-      paciente: '',
-      fecha: '',
-      hora: '',
-      sintomas: ''
-    },
-    error: false
-  };
+  state = { ...stateInicial };
 
   handleChange = e => {
     this.setState({
@@ -39,11 +42,20 @@ class NuevaCita extends Component {
       // Detener ejecución
       return;
     }
+    const nuevaCita = { ...this.state.cita };
+    nuevaCita.id = uuid();
     // Agregar cita al state de la app
-    this.props.crearNuevaCita(this.state.cita);
+    this.props.crearNuevaCita(nuevaCita);
+
+    this.setState({ ...stateInicial });
+  };
+
+  createAlert = () => {
+    delay(4000);
   };
 
   render() {
+    const { error } = this.state;
     return (
       <Fragment>
         <Container className='mt-5'>
@@ -51,6 +63,11 @@ class NuevaCita extends Component {
             <Form className='m-5' onSubmit={this.handleSubmit}>
               <Row>
                 <Col xs={12} md={12} lg={12}>
+                  {error ? (
+                    <Form.Text className='text-danger'>
+                      We'll never share your email with anyone else.
+                    </Form.Text>
+                  ) : null}
                   <Form.Group>
                     <Form.Label>Doctor</Form.Label>
                     <Form.Control
