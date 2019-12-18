@@ -40,7 +40,7 @@ class App extends Component {
   render() {
     return (
       <Fragment>
-        <Header />
+        <Header titulo={'Doctor App'} />
         <NuevaCita crearNuevaCita={this.crearNuevaCita} />
         <ListaCitas citas={this.state.citas} eliminarCita={this.eliminarCita} />
       </Fragment>

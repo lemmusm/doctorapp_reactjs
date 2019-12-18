@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { Container, Card, ListGroup } from 'react-bootstrap';
 import Cita from './Cita';
+import PropTypes from 'prop-types';
 
 const ListaCitas = ({ citas, eliminarCita }) => {
   return (
@@ -21,4 +22,8 @@ const ListaCitas = ({ citas, eliminarCita }) => {
   );
 };
 
+ListaCitas.propTypes = {
+  citas: PropTypes.array.isRequired,
+  eliminarCita: PropTypes.func.isRequired
+};
 export default ListaCitas;

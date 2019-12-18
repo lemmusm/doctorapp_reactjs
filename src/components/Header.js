@@ -1,16 +1,17 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { Navbar } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
-class Header extends Component {
-  render() {
-    return (
-      <Fragment>
-        <Navbar bg='dark' variant='dark'>
-          <Navbar.Brand href='#home'>Doctor App</Navbar.Brand>
-        </Navbar>
-      </Fragment>
-    );
-  }
-}
+const Header = ({ titulo }) => (
+  <Fragment>
+    <Navbar bg='dark' variant='dark'>
+      <Navbar.Brand href='#home'>{titulo}</Navbar.Brand>
+    </Navbar>
+  </Fragment>
+);
+
+Header.propTypes = {
+  titulo: PropTypes.string.isRequired
+};
 
 export default Header;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Row, Col, ListGroup, Button } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
 const Cita = ({ cita, eliminarCita }) => {
   return (
@@ -26,6 +27,11 @@ const Cita = ({ cita, eliminarCita }) => {
       <Button onClick={() => eliminarCita(cita.id)}>Eliminar cita</Button>
     </ListGroup.Item>
   );
+};
+
+Cita.propTypes = {
+  cita: PropTypes.object.isRequired,
+  eliminarCita: PropTypes.func.isRequired
 };
 
 export default Cita;

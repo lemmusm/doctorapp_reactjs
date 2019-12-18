@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Container, Card, Form, Button, Row, Col } from 'react-bootstrap';
 import uuid from 'uuid';
-import { delay } from 'q';
+import PropTypes from 'prop-types';
 
 const stateInicial = {
   cita: {
@@ -48,10 +48,6 @@ class NuevaCita extends Component {
     this.props.crearNuevaCita(nuevaCita);
 
     this.setState({ ...stateInicial });
-  };
-
-  createAlert = () => {
-    delay(4000);
   };
 
   render() {
@@ -144,5 +140,9 @@ class NuevaCita extends Component {
     );
   }
 }
+
+NuevaCita.propTypes = {
+  crearNuevaCita: PropTypes.func.isRequired
+};
 
 export default NuevaCita;
