@@ -7,6 +7,7 @@ const ListaCitas = ({ citas, eliminarCita }) => {
     <Fragment>
       <Container className='mt-5'>
         <Card className='p-5'>
+          <h3>Listado de citas</h3>
           <ListGroup>
             <ListGroup.Item>
               {citas.map(cita => (
